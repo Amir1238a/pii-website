@@ -287,6 +287,7 @@
       <nav aria-label="Primary">
         <ul>
           <li><a href="#about">About</a></li>
+          <li><a href="#events">Event</a></li>
           <li><a href="#programs">What We Do</a></li>
           <li><a href="#values">Values</a></li>
           <li><a href="#join">Join</a></li>
@@ -303,6 +304,15 @@
 
   <main id="top">
     <div class="wrap hero">
+      <!-- FIRST EVENT NOTICE -->
+      <div class="card" style="margin-bottom:18px; padding:18px; border-left:6px solid var(--brand);">
+        <strong>📢 First PII Event</strong><br>
+        <span style="color:var(--muted); font-weight:700;">
+          Kickoff Workshop: Study Smarter for Winter Term<br>
+          📍 Location: YorkU (in-person) + Zoom option<br>
+          📅 Date: To be announced — book an appointment below
+        </span>
+      </div>
       <div class="heroGrid">
         <div class="card heroMain">
           <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Student-run • Peer-led • YorkU</div>
@@ -313,8 +323,9 @@
           </p>
           <div class="heroActions">
             <a class="btn primary" href="#programs">Explore programs</a>
+            <a class="btn" href="#events">See our first event</a>
             <a class="btn" href="#join">Join as a member</a>
-            <a class="btn" href="#contact">Partner / Collaborate</a>
+            <a class="btn" href="#contact">Book an appointment</a>
           </div>
           <p style="margin:16px 0 0; color:var(--muted); font-weight:700; font-size:13px;">
             Note: PII provides peer-to-peer learning support and study skills — we are not an official tutoring or academic advising service.
@@ -368,6 +379,50 @@
               <div class="li"><span class="check" aria-hidden="true">✓</span><span><strong>First years</strong> adjusting to university-level studying.</span></div>
               <div class="li"><span class="check" aria-hidden="true">✓</span><span><strong>Upper years</strong> improving efficiency, confidence, and grades.</span></div>
               <div class="li"><span class="check" aria-hidden="true">✓</span><span><strong>Anyone</strong> who wants a supportive, student-run community.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="events">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>First event</h2>
+          <p class="sub">A quick notice you can update anytime.</p>
+        </div>
+
+        <div class="card panel">
+          <div style="display:flex; flex-wrap:wrap; gap:12px; align-items:flex-start; justify-content:space-between;">
+            <div style="min-width: 260px; flex:1;">
+              <div class="eyebrow" style="margin-bottom:10px;"><span class="dot" aria-hidden="true"></span> Upcoming</div>
+              <h3 style="margin:0 0 6px; font-size:18px;">PII Kickoff: Study Smarter Workshop</h3>
+              <p style="margin:0; color:var(--muted); font-weight:700;">
+                Learn how to study efficiently (active recall, spaced repetition, and a simple weekly plan). Open to all YorkU students.
+              </p>
+              <div style="margin-top:12px; display:grid; gap:8px; color:rgba(229,231,235,.92); font-weight:700;">
+                <div>📅 <span style="color:var(--muted); font-weight:800;">Date:</span> Friday, February 27</div>
+                <div>🕒 <span style="color:var(--muted); font-weight:800;">Time:</span> TBD</div>
+                <div>📍 <span style="color:var(--muted); font-weight:800;">Location:</span> TBD</div>
+              </div>
+              <p style="margin:12px 0 0; color:var(--muted); font-weight:700; font-size:13px;">
+                Tip: Replace “TBD” once your booking is confirmed.
+              </p>
+            </div>
+
+            <div style="min-width: 260px; flex:0 0 320px;">
+              <div class="li" style="height:100%;">
+                <span class="check" aria-hidden="true">⭐</span>
+                <div>
+                  <div style="font-weight:900;">Want a reminder?</div>
+                  <div style="color:var(--muted); font-weight:700; margin-top:4px;">
+                    Follow us on Instagram for updates and new sessions.
+                  </div>
+                  <div style="margin-top:10px;">
+                    <a class="btn primary" href="https://instagram.com/pii_yorku" target="_blank" rel="noopener">@pii_yorku</a>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -464,31 +519,141 @@
     <section id="contact">
       <div class="wrap">
         <div class="sectionTitle">
-          <h2>Contact</h2>
-          <p class="sub">Add your official email + social links here. (These are placeholders you can edit.)</p>
+          <h2>Contact & appointments</h2>
+          <p class="sub">Book a quick study-support appointment (in-person or Zoom). We’ll follow up to confirm.</p>
         </div>
 
-        <div class="card panel">
-          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:14px;">
-            <div class="li">
+        <div class="split">
+          <div class="card panel">
+            <h3 style="margin:0 0 10px; font-size:16px;">Book an appointment</h3>
+            <p style="margin:0 0 14px; color:var(--muted); font-weight:700;">
+              Fill this out and we’ll confirm by email. (This form creates a draft email automatically.)
+            </p>
+
+            <form id="apptForm" class="card" style="padding:16px; background: rgba(255,255,255,.04); border-color: rgba(255,255,255,.10); box-shadow:none;">
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+                <label style="display:grid; gap:6px; font-weight:800; font-size:13px; color:var(--muted);">
+                  Your name
+                  <input name="name" required placeholder="First + Last" style="padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.18); color:var(--text);" />
+                </label>
+                <label style="display:grid; gap:6px; font-weight:800; font-size:13px; color:var(--muted);">
+                  Your YorkU email
+                  <input name="email" type="email" required placeholder="name@my.yorku.ca" style="padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.18); color:var(--text);" />
+                </label>
+
+                <label style="display:grid; gap:6px; font-weight:800; font-size:13px; color:var(--muted);">
+                  Program
+                  <input name="program" required placeholder="e.g., Biomedical Science" style="padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.18); color:var(--text);" />
+                </label>
+
+                <label style="display:grid; gap:6px; font-weight:800; font-size:13px; color:var(--muted);">
+                  Year
+                  <select name="year" required style="padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.18); color:var(--text);">
+                    <option value="" selected disabled>Select</option>
+                    <option>1st year</option>
+                    <option>2nd year</option>
+                    <option>3rd year</option>
+                    <option>4th year</option>
+                    <option>Graduate</option>
+                    <option>Other</option>
+                  </select>
+                </label>
+
+                <label style="display:grid; gap:6px; grid-column:1 / -1; font-weight:800; font-size:13px; color:var(--muted);">
+                  Courses you want help with
+                  <input name="courses" required placeholder="e.g., BIOL 1000, CHEM 1000" style="padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.18); color:var(--text);" />
+                </label>
+
+                <label style="display:grid; gap:6px; font-weight:800; font-size:13px; color:var(--muted);">
+                  Appointment type
+                  <select name="type" required style="padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.18); color:var(--text);">
+                    <option value="" selected disabled>Select</option>
+                    <option>In-person</option>
+                    <option>Zoom</option>
+                  </select>
+                </label>
+
+                <label style="display:grid; gap:6px; font-weight:800; font-size:13px; color:var(--muted);">
+                  Preferred date
+                  <input name="date" type="date" required style="padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.18); color:var(--text);" />
+                </label>
+
+                <label style="display:grid; gap:6px; font-weight:800; font-size:13px; color:var(--muted);">
+                  Preferred time
+                  <input name="time" type="time" required style="padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.18); color:var(--text);" />
+                </label>
+
+                <label style="display:grid; gap:6px; font-weight:800; font-size:13px; color:var(--muted);">
+                  Backup date (optional)
+                  <input name="date2" type="date" style="padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.18); color:var(--text);" />
+                </label>
+
+                <label style="display:grid; gap:6px; font-weight:800; font-size:13px; color:var(--muted);">
+                  Backup time (optional)
+                  <input name="time2" type="time" style="padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.18); color:var(--text);" />
+                </label>
+
+                <label style="display:grid; gap:6px; grid-column:1 / -1; font-weight:800; font-size:13px; color:var(--muted);">
+                  Anything else (optional)
+                  <textarea name="notes" rows="3" placeholder="What are you struggling with? What kind of help do you want?" style="padding:12px; border-radius:14px; border:1px solid rgba(255,255,255,.10); background: rgba(0,0,0,.18); color:var(--text);"></textarea>
+                </label>
+              </div>
+
+              <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:12px;">
+                <button class="btn primary" type="submit">Send booking request</button>
+                <button class="btn" type="button" id="copyRequest">Copy request text</button>
+              </div>
+
+              <p style="margin:10px 0 0; color:var(--muted); font-weight:700; font-size:13px;">
+                This uses your email app to send the request. If you want a real system (saved into a spreadsheet), see “Exec management”.
+              </p>
+            </form>
+          </div>
+
+          <div class="card panel">
+            <h3 style="margin:0 0 10px; font-size:16px;">Instagram</h3>
+            <div class="li" style="margin-bottom:12px;">
+              <span class="check" aria-hidden="true">📷</span>
+              <div>
+                <div style="font-weight:900;">Follow us</div>
+                <div style="color:var(--muted); font-weight:700;">Click to open Instagram:</div>
+                <div style="margin-top:10px;">
+                  <a class="btn primary" href="https://instagram.com/pii_yorku" target="_blank" rel="noopener">@pii_yorku</a>
+                </div>
+              </div>
+            </div>
+
+            <h3 style="margin:0 0 10px; font-size:16px;">Email</h3>
+            <div class="li" style="margin-bottom:12px;">
               <span class="check" aria-hidden="true">✉️</span>
               <div>
-                <div style="font-weight:900;">Email</div>
+                <div style="font-weight:900;">Club email</div>
                 <div style="color:var(--muted); font-weight:700;">pii@yorku.ca (replace with your club email)</div>
               </div>
             </div>
-            <div class="li">
-              <span class="check" aria-hidden="true">📷</span>
+
+            <h3 style="margin:0 0 10px; font-size:16px;">Exec management (recommended)</h3>
+            <p style="margin:0; color:var(--muted); font-weight:700;">
+              If you want a real booking system where responses go into a spreadsheet for you + execs to manage, the easiest beginner setup is:
+              <strong>Google Form → Google Sheets</strong> (free).
+            </p>
+            <ul class="list" aria-label="Exec management steps">
+              <li class="li"><span class="check" aria-hidden="true">1</span><span>Create a Google Form with the same questions.</span></li>
+              <li class="li"><span class="check" aria-hidden="true">2</span><span>Link it to Google Sheets (this becomes your dashboard).</span></li>
+              <li class="li"><span class="check" aria-hidden="true">3</span><span>Embed the form here (I’ll do it once you paste the form link).</span></li>
+            </ul>
+
+            <div class="li" style="margin-top:12px;">
+              <span class="check" aria-hidden="true">🔒</span>
               <div>
-                <div style="font-weight:900;">Instagram</div>
-                <div style="color:var(--muted); font-weight:700;">@pii.yorku (replace with your handle)</div>
+                <div style="font-weight:900;">Private dashboard link</div>
+                <div style="color:var(--muted); font-weight:700;">Add your exec-only Google Sheets link here (not shown publicly).</div>
+                <div style="margin-top:10px;">
+                  <a class="btn" href="#" onclick="alert('Replace this link with your exec-only Google Sheets URL.'); return false;">Exec dashboard (placeholder)</a>
+                </div>
               </div>
             </div>
           </div>
-
-          <p style="margin:14px 0 0; color:var(--muted); font-weight:700; font-size:13px;">
-            Tip: Once you choose your real email + Instagram handle, I can update this page to match.
-          </p>
         </div>
       </div>
     </section>
@@ -556,6 +721,57 @@
     document.addEventListener('keydown', (e)=>{
       if(e.key === 'Escape' && menuBack.style.display === 'flex') hideMenu();
     });
+
+    // Appointment form -> creates an email draft (easy beginner-friendly)
+    const CLUB_EMAIL = 'pii@yorku.ca'; // TODO: replace with your real club email
+
+    const apptForm = document.getElementById('apptForm');
+    const copyBtn = document.getElementById('copyRequest');
+
+    function buildRequestText(fd){
+      const lines = [
+        'PII Appointment Request',
+        '-----------------------',
+        `Name: ${fd.get('name')}`,
+        `Email: ${fd.get('email')}`,
+        `Program: ${fd.get('program')}`,
+        `Year: ${fd.get('year')}`,
+        `Courses: ${fd.get('courses')}`,
+        `Type: ${fd.get('type')}`,
+        `Preferred: ${fd.get('date')} at ${fd.get('time')}`,
+      ];
+      const d2 = fd.get('date2');
+      const t2 = fd.get('time2');
+      if(d2 || t2) lines.push(`Backup: ${d2 || '(no date)'} at ${t2 || '(no time)'}`);
+      const notes = (fd.get('notes') || '').trim();
+      if(notes) lines.push('', 'Notes:', notes);
+      return lines.join('
+');
+    }
+
+    if(apptForm){
+      apptForm.addEventListener('submit', (e)=>{
+        e.preventDefault();
+        const fd = new FormData(apptForm);
+        const subject = encodeURIComponent('PII Appointment Request');
+        const body = encodeURIComponent(buildRequestText(fd));
+        window.location.href = `mailto:${CLUB_EMAIL}?subject=${subject}&body=${body}`;
+      });
+    }
+
+    if(copyBtn){
+      copyBtn.addEventListener('click', async ()=>{
+        const fd = new FormData(apptForm);
+        const text = buildRequestText(fd);
+        try{
+          await navigator.clipboard.writeText(text);
+          copyBtn.textContent = 'Copied!';
+          setTimeout(()=> copyBtn.textContent = 'Copy request text', 1200);
+        }catch{
+          alert('Copy failed. You can still submit the form to email it.');
+        }
+      });
+    }
 
     // Smooth scroll
     document.querySelectorAll('a[href^="#"]').forEach(a => {
