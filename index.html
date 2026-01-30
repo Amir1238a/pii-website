@@ -1,0 +1,568 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Peer Instruction Initiative (PII) | York University</title>
+  <meta name="description" content="Peer-led, student-run learning support at York University. Study strategies, exam prep, and academic skill-building workshops." />
+  <style>
+    :root{
+      --bg:#0b0f19;
+      --panel:#111827;
+      --panel2:#0f172a;
+      --text:#e5e7eb;
+      --muted:#9ca3af;
+      --brand:#e31837; /* YorkU-inspired red */
+      --brand2:#f43f5e;
+      --ring: rgba(227,24,55,.35);
+      --shadow: 0 18px 60px rgba(0,0,0,.55);
+      --radius: 18px;
+      --max: 1100px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      color:var(--text);
+      background:
+        radial-gradient(900px 500px at 15% 15%, rgba(227,24,55,.22), transparent 55%),
+        radial-gradient(800px 420px at 85% 10%, rgba(244,63,94,.16), transparent 55%),
+        radial-gradient(900px 500px at 70% 85%, rgba(99,102,241,.10), transparent 55%),
+        linear-gradient(180deg, var(--bg), #070a12);
+      line-height:1.5;
+    }
+
+    a{color:inherit; text-decoration:none}
+    .wrap{max-width:var(--max); margin:0 auto; padding:0 20px}
+
+    /* Top Nav */
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(10px);
+      background: rgba(11,15,25,.65);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+    }
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:16px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-weight:700;
+      letter-spacing:.2px;
+    }
+    .logo{
+      width:38px;height:38px;
+      border-radius:12px;
+      background: radial-gradient(circle at 30% 30%, #fff, rgba(255,255,255,.25) 30%, transparent 65%),
+                  linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 12px 30px rgba(227,24,55,.18);
+      position:relative;
+      overflow:hidden;
+    }
+    .logo:after{
+      content:"";
+      position:absolute; inset:-40% -30% auto auto;
+      width:100px;height:100px;
+      background:rgba(255,255,255,.18);
+      transform: rotate(20deg);
+      border-radius:24px;
+    }
+
+    nav ul{list-style:none; margin:0; padding:0; display:flex; gap:18px; align-items:center}
+    nav a{color:var(--muted); font-weight:600; font-size:14px}
+    nav a:hover{color:var(--text)}
+
+    .cta{
+      display:flex; align-items:center; gap:10px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding:10px 14px;
+      border-radius:14px;
+      font-weight:700;
+      font-size:14px;
+      border:1px solid rgba(255,255,255,.10);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      box-shadow: 0 10px 30px rgba(0,0,0,.25);
+      transition: transform .12s ease, border-color .12s ease, background .12s ease;
+      cursor:pointer;
+    }
+    .btn:hover{transform: translateY(-1px); border-color: rgba(255,255,255,.18); background: rgba(255,255,255,.08)}
+    .btn.primary{
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      border-color: rgba(255,255,255,.12);
+      box-shadow: 0 16px 40px rgba(227,24,55,.18);
+    }
+    .btn.primary:hover{transform: translateY(-1px) scale(1.01)}
+
+    /* Mobile nav */
+    .menuBtn{display:none}
+    @media (max-width: 860px){
+      nav ul{display:none}
+      .menuBtn{display:inline-flex}
+    }
+
+    /* Hero */
+    .hero{
+      padding:56px 0 26px;
+    }
+    .heroGrid{
+      display:grid;
+      grid-template-columns: 1.25fr .75fr;
+      gap:22px;
+      align-items:stretch;
+    }
+    .card{
+      background: linear-gradient(180deg, rgba(17,24,39,.78), rgba(15,23,42,.72));
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .heroMain{padding:28px}
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:8px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--muted);
+      font-weight:700;
+      font-size:13px;
+    }
+    .dot{width:9px;height:9px;border-radius:99px;background: var(--brand)}
+
+    h1{
+      margin:16px 0 12px;
+      font-size: clamp(28px, 3.2vw, 44px);
+      line-height:1.1;
+      letter-spacing:-.5px;
+    }
+    .lead{color: rgba(229,231,235,.92); font-size: 16px; max-width: 58ch}
+    .heroActions{display:flex; flex-wrap:wrap; gap:10px; margin-top:18px}
+
+    .heroSide{padding:22px; display:flex; flex-direction:column; gap:14px}
+    .stat{
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 16px;
+      padding:14px;
+    }
+    .stat .k{color:var(--muted); font-weight:700; font-size:12px; letter-spacing:.2px; text-transform:uppercase}
+    .stat .v{font-weight:900; font-size:18px; margin-top:6px}
+
+    @media (max-width: 860px){
+      .heroGrid{grid-template-columns:1fr}
+      .heroSide{flex-direction:row; flex-wrap:wrap}
+      .stat{flex:1; min-width: 210px}
+    }
+
+    /* Sections */
+    section{padding:26px 0}
+    .sectionTitle{display:flex; align-items:flex-end; justify-content:space-between; gap:16px; margin-bottom:14px}
+    h2{margin:0; font-size:22px; letter-spacing:-.2px}
+    .sub{margin:0; color:var(--muted); max-width: 70ch; font-weight:600; font-size:14px}
+
+    .grid3{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:14px;
+    }
+    @media (max-width: 860px){
+      .grid3{grid-template-columns:1fr}
+    }
+
+    .tile{padding:18px}
+    .icon{
+      width:38px;height:38px;border-radius:14px;
+      display:grid;place-items:center;
+      background: rgba(227,24,55,.14);
+      border: 1px solid rgba(227,24,55,.35);
+      box-shadow: 0 14px 30px rgba(227,24,55,.12);
+      margin-bottom:12px;
+    }
+    .tile h3{margin:0 0 6px; font-size:16px}
+    .tile p{margin:0; color:var(--muted); font-weight:600; font-size:14px}
+
+    .split{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:14px;
+      align-items:stretch;
+    }
+    @media (max-width: 860px){
+      .split{grid-template-columns:1fr}
+    }
+
+    .panel{padding:20px}
+    .list{margin:10px 0 0; padding:0; list-style:none; display:grid; gap:10px}
+    .li{
+      display:flex; gap:10px; align-items:flex-start;
+      padding:12px;
+      border-radius:16px;
+      background: rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.10);
+    }
+    .check{
+      width:22px;height:22px;border-radius:8px;
+      background: rgba(34,197,94,.14);
+      border:1px solid rgba(34,197,94,.35);
+      display:grid;place-items:center;
+      flex:0 0 auto;
+      margin-top:1px;
+    }
+
+    /* Footer */
+    footer{
+      padding:34px 0 48px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      margin-top: 18px;
+      background: rgba(0,0,0,.15);
+    }
+    .footerGrid{display:flex; flex-wrap:wrap; gap:14px; align-items:center; justify-content:space-between}
+    .small{color:var(--muted); font-weight:700; font-size:13px}
+    .links{display:flex; gap:14px; flex-wrap:wrap}
+    .links a{color:var(--muted); font-weight:700; font-size:13px}
+    .links a:hover{color:var(--text)}
+
+    /* Modal (mobile menu) */
+    .modalBack{
+      position:fixed; inset:0;
+      background: rgba(0,0,0,.55);
+      display:none;
+      align-items:flex-start;
+      justify-content:center;
+      padding:18px;
+      z-index:100;
+    }
+    .modal{
+      width:min(560px, 100%);
+      background: rgba(17,24,39,.92);
+      border:1px solid rgba(255,255,255,.10);
+      border-radius: 18px;
+      box-shadow: var(--shadow);
+      padding:16px;
+    }
+    .modal a{
+      display:block;
+      padding:12px 12px;
+      border-radius: 14px;
+      color: var(--text);
+      font-weight:800;
+    }
+    .modal a:hover{background: rgba(255,255,255,.06)}
+
+    /* Focus ring */
+    :focus-visible{
+      outline: 3px solid var(--ring);
+      outline-offset: 2px;
+      border-radius: 12px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Peer Instruction Initiative home">
+        <span class="logo" aria-hidden="true"></span>
+        <span>Peer Instruction Initiative <span style="color:var(--muted); font-weight:800;">(PII)</span></span>
+      </a>
+
+      <nav aria-label="Primary">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#programs">What We Do</a></li>
+          <li><a href="#values">Values</a></li>
+          <li><a href="#join">Join</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+
+      <div class="cta">
+        <button class="btn menuBtn" id="menuBtn" aria-haspopup="dialog" aria-controls="menuModal">Menu</button>
+        <a class="btn primary" href="#join">Get Involved</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="top">
+    <div class="wrap hero">
+      <div class="heroGrid">
+        <div class="card heroMain">
+          <div class="eyebrow"><span class="dot" aria-hidden="true"></span> Student-run • Peer-led • YorkU</div>
+          <h1>Study smarter with peer-led learning support.</h1>
+          <p class="lead">
+            The Peer Instruction Initiative (PII) is a non-profit, peer-led student club at York University.
+            We run structured workshops and small-group sessions focused on learning strategies, exam prep, and academic skill-building.
+          </p>
+          <div class="heroActions">
+            <a class="btn primary" href="#programs">Explore programs</a>
+            <a class="btn" href="#join">Join as a member</a>
+            <a class="btn" href="#contact">Partner / Collaborate</a>
+          </div>
+          <p style="margin:16px 0 0; color:var(--muted); font-weight:700; font-size:13px;">
+            Note: PII provides peer-to-peer learning support and study skills — we are not an official tutoring or academic advising service.
+          </p>
+        </div>
+
+        <aside class="card heroSide" aria-label="Highlights">
+          <div class="stat">
+            <div class="k">Focus</div>
+            <div class="v">Study strategies + exam prep</div>
+          </div>
+          <div class="stat">
+            <div class="k">Format</div>
+            <div class="v">Workshops + small groups</div>
+          </div>
+          <div class="stat">
+            <div class="k">Environment</div>
+            <div class="v">Inclusive, supportive, non‑judgmental</div>
+          </div>
+        </aside>
+      </div>
+    </div>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>About PII</h2>
+          <p class="sub">A peer-led student organization helping YorkU students build confidence and stronger learning habits.</p>
+        </div>
+
+        <div class="split">
+          <div class="card panel">
+            <h3 style="margin:0 0 8px; font-size:16px;">Our mission</h3>
+            <p style="margin:0; color:var(--muted); font-weight:600;">
+              We support student learning through peer-led instruction focused on effective learning strategies, exam preparation,
+              and academic skill development.
+            </p>
+            <ul class="list" aria-label="Mission highlights">
+              <li class="li"><span class="check" aria-hidden="true">✓</span><span><strong>Structured support</strong> for students who want a better approach after academic underperformance.</span></li>
+              <li class="li"><span class="check" aria-hidden="true">✓</span><span><strong>Evidence‑informed methods</strong> that improve comprehension and retention.</span></li>
+              <li class="li"><span class="check" aria-hidden="true">✓</span><span><strong>Peer instructor training</strong> to keep sessions consistent and high-quality.</span></li>
+            </ul>
+          </div>
+
+          <div class="card panel">
+            <h3 style="margin:0 0 8px; font-size:16px;">Who we’re for</h3>
+            <p style="margin:0; color:var(--muted); font-weight:600;">
+              PII is open to all York University students who want practical tools for learning and exam performance.
+            </p>
+            <div style="margin-top:12px; display:grid; gap:10px;">
+              <div class="li"><span class="check" aria-hidden="true">✓</span><span><strong>First years</strong> adjusting to university-level studying.</span></div>
+              <div class="li"><span class="check" aria-hidden="true">✓</span><span><strong>Upper years</strong> improving efficiency, confidence, and grades.</span></div>
+              <div class="li"><span class="check" aria-hidden="true">✓</span><span><strong>Anyone</strong> who wants a supportive, student-run community.</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="programs">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>What we do</h2>
+          <p class="sub">Practical sessions that you can use immediately — no fluff.</p>
+        </div>
+
+        <div class="grid3">
+          <div class="card tile">
+            <div class="icon" aria-hidden="true">📘</div>
+            <h3>Study Strategy Workshops</h3>
+            <p>Active recall, spaced repetition, note systems, and planning that actually works.</p>
+          </div>
+          <div class="card tile">
+            <div class="icon" aria-hidden="true">🧩</div>
+            <h3>Small‑Group Sessions</h3>
+            <p>Peer-led practice, problem breakdowns, and accountable study time.</p>
+          </div>
+          <div class="card tile">
+            <div class="icon" aria-hidden="true">🧠</div>
+            <h3>Exam Prep Support</h3>
+            <p>How to prepare, how to practice, and how to manage exam stress.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="values">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Our values</h2>
+          <p class="sub">We keep PII welcoming, respectful, and accessible for everyone.</p>
+        </div>
+
+        <div class="grid3">
+          <div class="card tile">
+            <div class="icon" aria-hidden="true">🤝</div>
+            <h3>Inclusive & supportive</h3>
+            <p>A non-judgmental space where students can ask questions and grow.</p>
+          </div>
+          <div class="card tile">
+            <div class="icon" aria-hidden="true">⚖️</div>
+            <h3>Equity & accessibility</h3>
+            <p>We design sessions that are clear, structured, and easy to join.</p>
+          </div>
+          <div class="card tile">
+            <div class="icon" aria-hidden="true">📈</div>
+            <h3>Academic resilience</h3>
+            <p>Progress over perfection — build habits that hold up under pressure.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="join">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Join PII</h2>
+          <p class="sub">Want to attend sessions, volunteer, or become a peer instructor? Start here.</p>
+        </div>
+
+        <div class="split">
+          <div class="card panel">
+            <h3 style="margin:0 0 8px; font-size:16px;">For students</h3>
+            <p style="margin:0; color:var(--muted); font-weight:600;">
+              Join as a general member and get updates about workshops, small groups, and exam prep events.
+            </p>
+            <div style="margin-top:14px; display:flex; gap:10px; flex-wrap:wrap;">
+              <a class="btn primary" href="#contact">Join / get updates</a>
+              <a class="btn" href="#programs">See what we offer</a>
+            </div>
+          </div>
+          <div class="card panel">
+            <h3 style="margin:0 0 8px; font-size:16px;">For volunteers / peer instructors</h3>
+            <p style="margin:0; color:var(--muted); font-weight:600;">
+              Help lead sessions, support workshops, or contribute to content and planning.
+            </p>
+            <ul class="list" aria-label="Volunteer roles">
+              <li class="li"><span class="check" aria-hidden="true">✓</span><span>Peer Instructor (facilitate small groups)</span></li>
+              <li class="li"><span class="check" aria-hidden="true">✓</span><span>Workshop Support (setup, slides, logistics)</span></li>
+              <li class="li"><span class="check" aria-hidden="true">✓</span><span>Media & Outreach (content, posts, promotions)</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="sectionTitle">
+          <h2>Contact</h2>
+          <p class="sub">Add your official email + social links here. (These are placeholders you can edit.)</p>
+        </div>
+
+        <div class="card panel">
+          <div style="display:grid; grid-template-columns: 1fr 1fr; gap:14px;">
+            <div class="li">
+              <span class="check" aria-hidden="true">✉️</span>
+              <div>
+                <div style="font-weight:900;">Email</div>
+                <div style="color:var(--muted); font-weight:700;">pii@yorku.ca (replace with your club email)</div>
+              </div>
+            </div>
+            <div class="li">
+              <span class="check" aria-hidden="true">📷</span>
+              <div>
+                <div style="font-weight:900;">Instagram</div>
+                <div style="color:var(--muted); font-weight:700;">@pii.yorku (replace with your handle)</div>
+              </div>
+            </div>
+          </div>
+
+          <p style="margin:14px 0 0; color:var(--muted); font-weight:700; font-size:13px;">
+            Tip: Once you choose your real email + Instagram handle, I can update this page to match.
+          </p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footerGrid">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <div>
+          <div style="font-weight:900;">Peer Instruction Initiative (PII)</div>
+          <div class="small">Student-run club at York University</div>
+        </div>
+      </div>
+      <div class="links" aria-label="Footer links">
+        <a href="#about">About</a>
+        <a href="#programs">Programs</a>
+        <a href="#values">Values</a>
+        <a href="#join">Join</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div class="small">© <span id="year"></span> PII • Built with ♥</div>
+    </div>
+  </footer>
+
+  <!-- Mobile menu modal -->
+  <div class="modalBack" id="menuBack" role="dialog" aria-modal="true" aria-label="Menu" tabindex="-1">
+    <div class="modal" id="menuModal">
+      <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; padding:4px 6px 10px;">
+        <div style="font-weight:900;">Menu</div>
+        <button class="btn" id="closeMenu">Close</button>
+      </div>
+      <a href="#about">About</a>
+      <a href="#programs">What We Do</a>
+      <a href="#values">Values</a>
+      <a href="#join">Join</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Mobile menu
+    const menuBtn = document.getElementById('menuBtn');
+    const menuBack = document.getElementById('menuBack');
+    const closeMenu = document.getElementById('closeMenu');
+
+    function openMenu(){
+      menuBack.style.display = 'flex';
+      menuBack.focus();
+    }
+    function hideMenu(){
+      menuBack.style.display = 'none';
+    }
+
+    if(menuBtn){
+      menuBtn.addEventListener('click', openMenu);
+    }
+    closeMenu.addEventListener('click', hideMenu);
+    menuBack.addEventListener('click', (e)=>{ if(e.target === menuBack) hideMenu(); });
+
+    // Close on Escape
+    document.addEventListener('keydown', (e)=>{
+      if(e.key === 'Escape' && menuBack.style.display === 'flex') hideMenu();
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', () => {
+        if(menuBack.style.display === 'flex') hideMenu();
+      });
+    });
+  </script>
+</body>
+</html>
